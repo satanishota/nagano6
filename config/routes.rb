@@ -5,11 +5,11 @@ Rails.application.routes.draw do
  :sessions => 'admin/sessions'}
 
 
-Rails.application.routes.draw do
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
+  namespace :admin do
+    resources :items
+    resources :customers, only: [:edit, :show, :index, :update]
   end
+
   scope module: :public do
     devise_for :customers, :controllers => {
  :registrations => 'public/registrations',
@@ -17,6 +17,5 @@ Rails.application.routes.draw do
  resources :customers, only: [:edit, :show, :update]
 
   end
-end
 end
 

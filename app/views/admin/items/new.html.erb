@@ -1,0 +1,23 @@
+<h1>商品新規登録</h1>
+
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <% @item.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<%= form_with model:@item, url: admin_items_path, local:true do |f| %>
+
+  <p>商品画像</p>
+  <p><%= f.attachment_field :image %></p>
+  <p>商品名</p>
+  <p><%= f.text_field :name %></p>
+  <p>商品説明</p>
+  <p><%= f.text_field :introduction %></p>
+  <p>税抜価格</p>
+  <p><%= f.text_field :price %></p>
+
+  <%= f.submit '投稿' %>
+  <% end %>
+

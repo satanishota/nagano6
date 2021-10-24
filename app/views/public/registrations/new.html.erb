@@ -48,13 +48,15 @@
 
   <div class="field">
     <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true %>
+    <%= f.text_field :"address", autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :telephone_number %><br />
     <%= f.text_field :telephone_number, autofocus: true %>
   </div>
+
+  <%= @customer.is_active ? 'aa' : 'bb' %>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
