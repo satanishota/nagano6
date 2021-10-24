@@ -1,0 +1,21 @@
+<h1>ショッピングカートカート</h1>
+
+<p> <%= link_to "新規登録", new_admin_item_path %></p>
+
+  <table>
+    <tr>
+      <th>商品名</th>
+      <th>単価</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+    <% @items.each do |item| %>
+    <tr>
+      <th>
+    <%= link_to item.name, admin_item_path(item.id) %>
+　    </th>
+　    <th><%= item.price %></th>
+　    <th><%= item.amount %></th>
+　    </tr>
+    <% end %>
+  </table>

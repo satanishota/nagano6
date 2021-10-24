@@ -1,0 +1,18 @@
+<h1>Public::Items#show</h1>
+
+<p><%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "no_image.jpg", size:'60x60',format: 'jpeg' %></p>
+<p>商品名</p>
+<p><%= @item.name %></p>
+<p>商品説明</p>
+<p><%= @item.introduction %></p>
+<p>税抜価格</p>
+<p><%= @item.price %></p>
+
+<%= form_with model:@cart_items, url: _item_path, local:true do |f| %>
+
+  
+  <p>税抜価格</p>
+  <p><%= f.text_field :amount %></p>
+
+  <%= f.submit 'カートに入れる' %>
+

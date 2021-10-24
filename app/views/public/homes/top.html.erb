@@ -1,0 +1,13 @@
+<h1>ようこそ、ながのCAKEへ！</h1>
+
+<h1>新着商品</h1>
+
+    <% @items.each do |item| %>
+
+      <p><%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "no_image.jpg", size:'60x60',format: 'jpeg' %></p>
+      <p>
+    <%= link_to item.name, admin_item_path(item.id) %>
+　    </p>
+　    <p><%= item.price %></p>
+
+    <% end %>

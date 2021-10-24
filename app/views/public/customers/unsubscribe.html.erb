@@ -1,0 +1,5 @@
+<h1>本当に退会しますか？</h1>
+
+<%= link_to '有効', customer_path(@customer.id, customer: {is_active: false}), method: :put %>
+
+<%= link_to '退会', customers_withdraw_path(@customer.id, customer: {is_active: true}), method: :patch %>
