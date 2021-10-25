@@ -1,0 +1,21 @@
+<h1>注文情報入力</h1>
+
+
+<%= form_with model:@order, url: orders_path, local:true do |f| %>
+
+  <p>支払い方法</p>
+  <%= f.radio_button :payment_method, :crejit %>
+  <%= f.label :payment_method, "クレジットカード" %>
+  <%= f.radio_button :payment_method, :ginnkou %>
+  <%= f.label :payment_method, "銀行振込", {value: :female, style: "display: inline-block;"} %>
+
+
+  <p>お届け先</p>
+  <p><%= f.text_field :name %></p>
+
+
+  <%= f.submit '投稿' %>
+  <% end %>
+
+
+

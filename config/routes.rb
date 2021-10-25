@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
 
   namespace :public do
+    get 'orders/new'
+    get 'orders/show'
+    get 'orders/index'
+  end
+  namespace :public do
     get 'items/show'
     get 'items/index'
   end
@@ -30,7 +35,10 @@ Rails.application.routes.draw do
  patch 'customers/withdraw' => 'customers#withdraw'
  root to: 'homes#top'
  get 'about' => 'homes#about'
- resources :cart_items, only: [:index, :update, :create, :delete]
+ resources :cart_items, only: [:index, :update, :create, :destroy]
+ delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+ resources :items, only: [:index, :show]
+ resources :orders, only: [:new, :index, :show ,:create]
 
 
   end

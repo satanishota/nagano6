@@ -1,33 +1,35 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @items = Item.all
+    @cart_items = current_customer.cart_items
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    if @cart_item.save
-      redirect_to cart_items_path
-    else
-      render :show
-    end
+
+    @cart_item = current_customer.cart_items.new(cart_item_params)
+    @cart_item.save
+    redirect_to cart_items_path
+
 
   end
 
   def update
-     @item = Item.find(params[:id])
-    if @item.update(item_params)
-      redirect_to admin_item_path(@item.id)
-    else
-      render :edit
-    end
+    @cart_items = current_customer.cart_items
+    @cart_items.update(cart_item_params)
+      redirect_to cart_items_path
 
   end
 
 
   def destroy
+    @cart_items = current_customer.cart_items
+    @cart_items.delete(cart_item_params)
+      redirect_to cart_items_path
   end
 
+
   def destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   private

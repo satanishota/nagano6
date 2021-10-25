@@ -8,11 +8,12 @@
 <p>税抜価格</p>
 <p><%= @item.price %></p>
 
-<%= form_with model:@cart_items, url: _item_path, local:true do |f| %>
+<%= form_with model:@cart_item, url: cart_items_path, local:true do |f| %>
 
-  
-  <p>税抜価格</p>
+
+  <p>個数</p>
   <p><%= f.text_field :amount %></p>
+  <%= f.hidden_field :item_id, :value => @item.id%>
 
   <%= f.submit 'カートに入れる' %>
-
+<% end %>
