@@ -1,7 +1,8 @@
 <h1>ショッピングカート</h1>
 
 <p> <%= link_to "買い物をつづける", root_path %></p>
-<p><%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete %></p>
+<P><%= link_to "カートを空にする", cart_items_path, method: :delete %>
+</P>
   <table>
     <tr>
       <th>商品名</th>
@@ -17,7 +18,7 @@
      <th><%= cart_item.item.price %></th>
 　    <th><%= cart_item.amount %></th>
 　    <th>
-　    <%= form_with model:@cart_item, url: cart_items_path, local:true do |f| %>
+　    <%= form_with model:cart_item, url: cart_item_path(cart_item.id), local:true do |f| %>
 　    <%= f.text_field :amount %>
 　    <%= f.hidden_field :item_id, :value => cart_item.item.id%>
 　    <%= f.submit '変更' %>
@@ -29,7 +30,7 @@
        <% b = cart_item.item.price.to_i %>
         <%= a*b %>
       </th>
-      <th><%= link_to "削除する", cart_items_path, method: :delete %>
+      <th><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %>
       </th>
 　    </tr>
 

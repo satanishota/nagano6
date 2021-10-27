@@ -36,7 +36,7 @@ Rails.application.routes.draw do
  root to: 'homes#top'
  get 'about' => 'homes#about'
  resources :cart_items, only: [:index, :update, :create, :destroy]
- delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+ delete 'cart_items' => 'cart_items#destroy_all'
  resources :items, only: [:index, :show]
  resources :orders, only: [:new, :index, :show ,:create]
 
