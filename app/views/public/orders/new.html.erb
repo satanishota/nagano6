@@ -11,7 +11,15 @@
 
 
   <p>お届け先</p>
+  <p>ご自身の住所</p>
+  <P>郵便番号</P>
+  <p><%= f.text_field :postal_code %></p>
+  <P>住所</P>
+  <p><%= f.text_field :address %></p>
+  <p>宛先</p>
   <p><%= f.text_field :name %></p>
+  
+  
 
 
   <%= f.submit '投稿' %>

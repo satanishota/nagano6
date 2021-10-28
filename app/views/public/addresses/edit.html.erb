@@ -1,0 +1,15 @@
+<h1>配送先編集</h1>
+
+
+<%= form_with model:@address, url: address_path(@address.id), local:true do |f| %>
+
+  <
+  <p>商品名</p>
+  <p><%= f.text_field :name %></p>
+  <p>商品説明</p>
+  <p><%= f.text_field :postal_code %></p>
+  <p>税抜価格</p>
+  <p><%= f.text_field :address %></p>
+
+  <%= f.submit '投稿' %>
+  <% end %>

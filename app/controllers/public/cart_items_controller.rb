@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
+    @order = Order.new
 
   end
 
@@ -33,6 +34,8 @@ class Public::CartItemsController < ApplicationController
     current_customer.cart_items.destroy_all
     redirect_to cart_items_path
   end
+
+
 
   private
   def cart_item_params

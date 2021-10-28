@@ -1,32 +1,39 @@
 class Public::OrdersController < ApplicationController
   def new
-    @item = Item.new
+    @oredr = Order.new
   end
 
   def show
-    @item = Item.find(params[:id])
+    @order = Order.find(params[:id])
   end
 
   def index
-    @items = Item.all
+    @orders = Order.all
   end
-  
+
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to admin_item_path(@item.id)
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @ad = current_customer.addresses
+
+    @order.postal_code = @ad.postal_code
+    @order.address = @ad.address
+    @order.name = @ad.name
+    @order.shipping_fees = 800
+    if @order.save
+      redirect_to orders_path(@order.id)
     else
       render :show
     end
 
   end
-  
+
   def comfirm
   end
-  
+
   def complete
   end
-  
+
   private
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_fees,

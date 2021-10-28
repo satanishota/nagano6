@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
   namespace :public do
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
+  namespace :public do
     get 'orders/new'
     get 'orders/show'
     get 'orders/index'
@@ -39,6 +43,7 @@ Rails.application.routes.draw do
  delete 'cart_items' => 'cart_items#destroy_all'
  resources :items, only: [:index, :show]
  resources :orders, only: [:new, :index, :show ,:create]
+ resources :addresses, only: [:edit, :index, :update ,:create, :destroy]
 
 
   end
