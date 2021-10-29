@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    @oredr = Order.new
+    @order = Order.new
   end
 
   def show
@@ -13,22 +13,23 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @ad = current_customer.addresses
-
-    @order.postal_code = @ad.postal_code
-    @order.address = @ad.address
-    @order.name = @ad.name
-    @order.shipping_fees = 800
-    if @order.save
-      redirect_to orders_path(@order.id)
+   
+    if @order.invalid?
+      redirect_to new_order_path
     else
-      render :show
+      render :confirm
     end
+
 
   end
 
-  def comfirm
+  def confirm
+    @order = Order.new(order_params)
+    if @order.save
+      render :complete
+    else
+      render :new
+    end
   end
 
   def complete

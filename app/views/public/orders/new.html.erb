@@ -1,7 +1,7 @@
 <h1>注文情報入力</h1>
 
 
-<%= form_with model:@order, url: orders_path, local:true do |f| %>
+<%= form_with model:@order, url:orders_path, local:true do |f| %>
 
   <p>支払い方法</p>
   <%= f.radio_button :payment_method, :crejit %>
@@ -9,17 +9,24 @@
   <%= f.radio_button :payment_method, :ginnkou %>
   <%= f.label :payment_method, "銀行振込", {value: :female, style: "display: inline-block;"} %>
 
+  <%= f.collection_select(:postal_code, current_customer.addresses, :id, :postal_code, prompt: "選択してください") %>
+
+
 
   <p>お届け先</p>
   <p>ご自身の住所</p>
+    <%= current_customer.postal_code %><%= current_customer.address %><br>
+    <%= current_customer.last_name + current_customer.first_name %>
   <P>郵便番号</P>
   <p><%= f.text_field :postal_code %></p>
   <P>住所</P>
   <p><%= f.text_field :address %></p>
   <p>宛先</p>
   <p><%= f.text_field :name %></p>
-  
-  
+
+  <%= f.hidden_field :billing_amount, :value =>@order.billing_amount + 800 %>
+  <%= f.hidden_field :shipping_fees, :value =>800 %>
+  <%= f.hidden_field :customer_id, :value =>current_customer.id %>
 
 
   <%= f.submit '投稿' %>

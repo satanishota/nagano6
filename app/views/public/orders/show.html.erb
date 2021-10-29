@@ -1,18 +1,17 @@
 <h1>Public::Orders#show</h1>
 
-<h1><%= @order.customer.name %>の会員詳細</h1>
+
 
 <p>配送先住所</p>
 <p><%= @order.postal_code %></p>
 <p>配送先郵便番号</p>
-<p><%= @orderr.address %></p>
+<p><%= @order.address %></p>
 <p>フリガナ</p>
-<p><%= @order.name</p>
+<p><%= @order.name %></p>
 <p>送料</p>
 <p><%= @order.shipping_fees %></p>
 <p>請求額</p>
-<p><%= @customer.billing_amount %></p>
+<p><%= @order.billing_amount %></p>
 <p>支払い方法</p>
-<p><%= @customer.payment_method %></p>
-
+<p><%= @order.payment_method %></p>
 
