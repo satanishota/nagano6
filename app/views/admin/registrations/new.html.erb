@@ -1,7 +1,7 @@
 <h2>管理者登録</h2>
 
 <%= form_with model: @admin, url: admin_registration_path, local: true do |f| %>
-  <%= render "admins/shared/error_messages", resource: resource %>
+  <%= render "admin/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
