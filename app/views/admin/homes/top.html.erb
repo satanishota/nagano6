@@ -1,0 +1,34 @@
+<h1>注文履歴一覧</h1>
+
+<p> <%= link_to "新規登録", new_admin_item_path %></p>
+
+
+
+  <table>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+    </tr>
+
+    <% @orders.each do |order| %>
+    <tr>
+      <th>
+      <%= link_to order.created_at, admin_order_path(order.id) %>
+      </th>
+      <th><%= order.customer.first_name %>
+　    </th>
+
+　      <% @total = 0 %>
+　      <%  @order_details = order.order_details %>
+        <% @order_details.each do |order_detail| %>
+
+　      <% @am = order_detail.amount %>
+　      <% @total = @am +  @total %>
+　      <% end %>
+　    <th>
+　      <%= @total %>
+　    </th>
+　    </tr>
+    <% end %>
+  </table>

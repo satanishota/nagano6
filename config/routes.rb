@@ -1,22 +1,5 @@
 Rails.application.routes.draw do
 
-
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/show'
-    get 'orders/index'
-  end
-  namespace :public do
-    get 'items/show'
-    get 'items/index'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
   devise_for :admin, :controllers => {
  :registrations => 'admin/registrations',
  :sessions => 'admin/sessions'}
@@ -27,6 +10,7 @@ Rails.application.routes.draw do
     resources :items
     resources :customers, only: [:edit, :show, :index, :update]
     resources :orders, only: [:show,:update]
+    root to: 'homes#top'
   end
 
   scope module: :public do
