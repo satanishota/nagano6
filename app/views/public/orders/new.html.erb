@@ -1,7 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-4">
+
 <h1>注文情報入力</h1>
 
 
-<%= form_with model:@order, url:orders_path, local:true do |f| %>
+<%= form_with model:@order, url:orders_confirm_path, local:true do |f| %>
 
   <p>支払い方法</p>
   <%= f.radio_button :payment_method, :credit_card %>
@@ -9,15 +13,18 @@
   <%= f.radio_button :payment_method, :transfar %>
   <%= f.label :payment_method, "銀行振込" %>
 
-  <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
-
-
 
   <p>お届け先</p>
-  <p>ご自身の住所</p>
+  <p><%= f.radio_button :select_address,0  %>
     <%= current_customer.postal_code %><%= current_customer.address %><br>
-    <%= current_customer.last_name + current_customer.first_name %>
-  <P>郵便番号</P>
+    <%= current_customer.last_name + current_customer.first_name %></p>
+
+  <p><%= f.radio_button :select_address,1  %>
+  <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %></p>
+
+  <p><%= f.radio_button :select_address,2  %></p>
+
+  <p>郵便番号</p>
   <p><%= f.text_field :postal_code %></p>
   <P>住所</P>
   <p><%= f.text_field :address %></p>
@@ -32,5 +39,7 @@
   <%= f.submit '投稿' %>
   <% end %>
 
-
+   </div>
+  </div>
+</div>
 
