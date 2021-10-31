@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-4">
+
 <h2>ログインp</h2>
 
 <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
@@ -23,3 +27,5 @@
 <% end %>
 
 <%= render "public/customers/shared/links" %>
+
+

@@ -19,11 +19,11 @@
     <% @cart_items.each do |cart_item| %>
     <tr>
      <th><%= cart_item.item.name %></th>
-     <th><%= cart_item.item.price %></th>
+     <th><%= cart_item.item.with_tax_price %></th>
 　    <th><%= cart_item.amount %></th>
 　    <th>
 　    <%= form_with model:cart_item, url: cart_item_path(cart_item.id), local:true do |f| %>
-　    <%= f.text_field :amount %>
+　    <%= f.select :amount, *[1..10] %>
 　    <%= f.hidden_field :item_id, :value => cart_item.item.id%>
 　    <%= f.submit '変更' %>
       <% end %>
@@ -31,7 +31,7 @@
 
 　    <th>
 　    <% a = cart_item.amount %>
-       <% b = cart_item.item.price.to_i %>
+       <% b = cart_item.item.with_tax_price %>
         <% @sum =  a*b %>
         <% @total = @sum + @total %>
         <%= @sum %>
@@ -47,7 +47,11 @@
 <%= @total %>
 <% @billing = @total+800 %>
 
+<% if @total <=1  %>
+$
+<% else %>
 <%= form_with model:@order, url: orders_path, local:true do |f| %>
 <%= f.hidden_field :billing_amount, :value =>@billing %>
  <%= f.submit '情報入力へ進む' %>
       <% end %>
+<% end %>

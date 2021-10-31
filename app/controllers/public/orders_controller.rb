@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = Order.new
+    @order = current_customer.orders.new
 
   end
 
@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
     if @order.invalid?
-      render :new
+      redirect_to new_order_path
     else
       render :confirm
     end

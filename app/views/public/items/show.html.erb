@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-4">
+
 <h1>Public::Items#show</h1>
 
 <p><%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "no_image.jpg", size:'60x60',format: 'jpeg' %></p>
@@ -6,14 +10,19 @@
 <p>商品説明</p>
 <p><%= @item.introduction %></p>
 <p>税抜価格</p>
-<p><%= @item.price %></p>
+<p>$<%= @item.with_tax_price%> </p>
 
 <%= form_with model:@cart_item, url: cart_items_path, local:true do |f| %>
 
 
   <p>個数</p>
-  <p><%= f.text_field :amount %></p>
+  <p><%= f.select :amount, *[1..10] %></p>
   <%= f.hidden_field :item_id, :value => @item.id%>
 
   <%= f.submit 'カートに入れる' %>
 <% end %>
+
+ </div>
+  </div>
+</div>
+

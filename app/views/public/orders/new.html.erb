@@ -4,12 +4,12 @@
 <%= form_with model:@order, url:orders_path, local:true do |f| %>
 
   <p>支払い方法</p>
-  <%= f.radio_button :payment_method, :crejit %>
+  <%= f.radio_button :payment_method, :credit_card %>
   <%= f.label :payment_method, "クレジットカード" %>
-  <%= f.radio_button :payment_method, :ginnkou %>
-  <%= f.label :payment_method, "銀行振込", {value: :female, style: "display: inline-block;"} %>
+  <%= f.radio_button :payment_method, :transfar %>
+  <%= f.label :payment_method, "銀行振込" %>
 
-  <%= f.collection_select(:postal_code, current_customer.addresses, :id, :postal_code, prompt: "選択してください") %>
+  <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
 
 
 
