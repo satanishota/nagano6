@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    
+
   end
 
   def index
@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
 
     end
     current_customer.cart_items.destroy_all
-  redirect_to complete_path
+  redirect_to orders_complete_path
 
 
   end

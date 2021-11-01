@@ -23,8 +23,8 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
      @customer = current_customer
-     @customer.update([:withdraw][:is_active])
-     render about_path
+     @customer.update(customer_params)
+     redirect_to about_path
 
   end
 

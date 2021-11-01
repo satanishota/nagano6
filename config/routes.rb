@@ -17,19 +17,20 @@ Rails.application.routes.draw do
     devise_for :customers, :controllers => {
  :registrations => 'public/registrations',
  :sessions => 'public/sessions'}
- resources :customers, only: [:edit, :update]
- get 'customers/my_page' => 'customers#show'
- get 'customers/unsubscribe' => 'customers#unsubscribe'
  patch 'customers/withdraw' => 'customers#withdraw'
+get 'customers/my_page' => 'customers#show'
+ get 'customers/unsubscribe' => 'customers#unsubscribe'
+ resources :customers, only: [:edit, :update]
  root to: 'homes#top'
  get 'about' => 'homes#about'
+  delete 'cart_items' => 'cart_items#destroy_all'
  resources :cart_items, only: [:index, :update, :create, :destroy]
- delete 'cart_items' => 'cart_items#destroy_all'
  resources :items, only: [:index, :show]
+ post 'orders/confirm' => 'orders#confirm'
+ get 'orders/complete' => 'orders#complete'
  resources :orders, only: [:new, :index, :show ,:create]
  resources :addresses, only: [:edit, :index, :update ,:create, :destroy]
- post 'orders/confirm' => 'orders#confirm'
- get 'complete' => 'orders#complete'
+
 
 
   end
