@@ -29,7 +29,7 @@ Rails.application.routes.draw do
  resources :orders, only: [:new, :index, :show ,:create]
  resources :addresses, only: [:edit, :index, :update ,:create, :destroy]
  post 'orders/confirm' => 'orders#confirm'
- get 'orders/complete' => 'orders#complete'
+ get 'complete' => 'orders#complete'
 
 
   end

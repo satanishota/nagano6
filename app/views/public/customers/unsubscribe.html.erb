@@ -2,4 +2,9 @@
 
 <%= link_to '有効', customer_path(@customer.id, customer: {is_active: false}), method: :put %>
 
-<%= link_to '退会', customers_withdraw_path(@customer.id, customer: {is_active: true}), method: :patch %>
+<%= form_with model:@customer, url:customer_path(@customer.id), local:true do |f| %>
+
+  <%= f.hidden_field :is_active, :value =>true %>
+
+  <%= f.submit '退会' %>
+  <% end %>

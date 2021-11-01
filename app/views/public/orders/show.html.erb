@@ -1,17 +1,57 @@
-<h1>Public::Orders#show</h1>
+<div class="container">
+  <div class="row">
+ <div class="col-md-8 offset-md-4">
+<h1>注文履歴詳細</h1>
+ </div>
 
-
-
-<p>配送先住所</p>
+<div class="col-md-8">
+<h4>注文情報</h4>
+<p>配送先</p>
 <p><%= @order.postal_code %></p>
-<p>配送先郵便番号</p>
-<p><%= @order.address %></p>
-<p>フリガナ</p>
-<p><%= @order.name %></p>
+</br>
+<%= @order.address %>
+</br>
+<%= @order.name %>
+<p>支払い方法</p>
+<p><%= @order.payment_method %></p>
+</div>
+
+ <div class="col-md-4">
+<h4>請求情報</h4>
+<p>商品合計</p>
+<%= @order.billing_amount - @order.shipping_fees %>
 <p>送料</p>
 <p><%= @order.shipping_fees %></p>
 <p>請求額</p>
 <p><%= @order.billing_amount %></p>
-<p>支払い方法</p>
-<p><%= @order.payment_method %></p>
+</div>
 
+ <div class="col-md-8 offset-md-4">
+<h4>注文内容</h4>
+<table>
+    <tr>
+      <th>商品</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+    <% @order_details = @order.order_details %>
+    <% @order_details.each do |order_detail| %>
+    <tr>
+      <th><%= order_detail.item.name %></th>
+　    <th><%= order_detail.purchased_price%></th>
+　    </th>
+　    <th><%= order_detail.amount %></th>
+　    <th>
+          <%= order_detail.purchased_price* order_detail.amount %>
+　    </th>
+　    </tr>
+    <% end %>
+  </table>
+
+
+
+
+   </div>
+  </div>
+</div>

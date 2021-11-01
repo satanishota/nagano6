@@ -2,16 +2,38 @@
   <div class="row">
     <div class="col-md-8 offset-md-4">
 
-<h1>Public::Orders#index</h1>
+<h1>注文履歴一覧</h1>
 
- <% @orders.each do |order| %>
 
-    <%= link_to order.id, order_path(order.id) %>
+<table>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th></th>
+    </tr>
+    <% @orders.each do |order| %>
+    <tr>
+      <th><%= order.created_at %></th>
+　    <th><%= order.postal_code %><%= order.address %><%= order.name %></th>
+
+　    <th><% @order_details = order.order_details %>
+　     <% @order_details.each do |order_detail| %>
+　      <%= order_detail.item.name%>
+　      </br>
+
+　      <% end %>
 　    </th>
+　    <th><%= order.billing_amount %></th>
+　    <th>
+　      <%= link_to "表示する", order_path(order.id) %>
+　    </th>
+　    </tr>
+    <% end %>
+  </table>
 
-<p>配送先住所</p>
-<p><%= order.postal_code %></p>
-<% end %>
+
 
     </div>
   </div>

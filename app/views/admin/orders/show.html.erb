@@ -3,7 +3,7 @@
 <p>購入者</p>
 <p><%= @order.customer.last_name %><%= @order.customer.first_name %></p>
 <p>注文日</p>
-<p><%= @order.created_at %></p>
+<p><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
 <p>配送方法方法</p>
 <p><%= @order.postal_code %><%= @order.address %><%= @order.name %></p>
 <p>支払い方法</p>

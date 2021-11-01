@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+ <div class="col-md-8 offset-md-4">
+
 <h1>会員情報編集</h1>
 
 <%= form_with model:@customer, url: customer_path, local:true do |f| %>
@@ -22,3 +26,6 @@
     <%= link_to "退会する", customers_unsubscribe_path(@customer.id) %>
 </p>
 
+   </div>
+  </div>
+</div

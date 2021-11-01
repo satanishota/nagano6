@@ -15,7 +15,7 @@
     <% @orders.each do |order| %>
     <tr>
       <th>
-      <%= link_to order.created_at, admin_order_path(order.id) %>
+      <%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %>
       </th>
       <th><%= order.customer.first_name %>
 　    </th>
