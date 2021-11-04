@@ -25,16 +25,9 @@
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
 
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_admin_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_admin_session_path %>
-      </li>
-    <% end %>
 
-    <% if customer_signed_in? %>
+
+     <% elsif customer_signed_in? %>
       <li>
         <%= link_to "マイページ", customers_my_page_path %>
       </li>
@@ -59,6 +52,7 @@
       </li>
       <li>
         <%= link_to "ログイン", new_customer_session_path %>
+
       </li>
     <% end %>
     <%= yield %>
