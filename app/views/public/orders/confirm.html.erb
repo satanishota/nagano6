@@ -38,7 +38,7 @@
 <p><%= @order.payment_method %></p>
 <%= f.hidden_field :payment_method, :value =>@order.payment_method %>
 
-<%= f.submit '投稿' %>
+ <%= f.submit '注文を確定する',data: { confirm: '注文を確定しますか' }, class: "btn btn-primary" %>
   <% end %>
 
      </div>
