@@ -257,3 +257,23 @@ Processing by Public::HomesController#about as HTML
 Completed 200 OK in 78ms (Views: 76.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 153.188.44.28 at 2021-11-12 01:11:11 +0000
+Cannot render console from 153.188.44.28! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Public::HomesController#top as HTML
+  Rendering public/homes/top.html.erb within layouts/application
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/public/homes/top.html.erb:10
+  Rendered public/homes/top.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 747ms (Views: 731.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/about" for 153.188.44.28 at 2021-11-12 01:11:27 +0000
+Cannot render console from 153.188.44.28! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::HomesController#about as HTML
+  Rendering public/homes/about.html.erb within layouts/application
+  Rendered public/homes/about.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 89ms (Views: 88.0ms | ActiveRecord: 0.0ms)
+
+
