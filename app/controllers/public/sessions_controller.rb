@@ -26,14 +26,12 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
- def reject_inactive_customer
+  def reject_inactive_customer
     @customer = Customer.find_by(email: params[:customer][:email])
 
-      if  @customer.is_active == true
-        flash[:danger] = 'お客様は退会済みです。'
-        redirect_to new_customer_session_path
-      end
-
- end
-
+    if @customer.is_active == true
+      flash[:danger] = 'お客様は退会済みです。'
+      redirect_to new_customer_session_path
+    end
+  end
 end

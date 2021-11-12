@@ -20,5 +20,4 @@ class Admin::ItemsControllerTest < ActionDispatch::IntegrationTest
     get admin_items_edit_url
     assert_response :success
   end
-
 end

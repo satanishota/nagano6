@@ -10,5 +10,4 @@ class Public::AddressesControllerTest < ActionDispatch::IntegrationTest
     get public_addresses_edit_url
     assert_response :success
   end
-
 end

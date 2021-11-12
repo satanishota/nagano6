@@ -1,6 +1,5 @@
 class Address < ApplicationRecord
-
-  belongs_to :customer, foreign_key: 'customer_id'
+  belongs_to :customer
 
   def full_address
     '〒' + postal_code + ' ' + address + ' ' + name

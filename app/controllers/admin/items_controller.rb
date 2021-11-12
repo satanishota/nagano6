@@ -10,7 +10,6 @@ class Admin::ItemsController < ApplicationController
     else
       render :show
     end
-
   end
 
   def index
@@ -26,18 +25,17 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
-     @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
     else
       render :edit
     end
-
   end
 
-private
+  private
+
   def item_params
     params.require(:item).permit(:name, :image, :introduction, :price)
   end
-
 end
